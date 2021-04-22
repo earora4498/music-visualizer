@@ -18,7 +18,7 @@ freq = 1:N;
 %-----------------------------------
  
 fc_high = 300;
-%high cutoff frequency to isolate melody
+%low cutoff frequency to isolate bass
  
 figure(4);
 [b2, a2] = butter(9,fc_high/(fs/2), 'low');
@@ -53,5 +53,5 @@ end
 
 vals = round(voltages);
 
-writematrix(vals,'vals.txt');
+writematrix(vals,'bassVoltages.txt');
 
