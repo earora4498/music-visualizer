@@ -1,11 +1,11 @@
-clear
-close all
-a = arduino('/dev/cu.usbmodem144301','Uno');
+% clear
+% close all
+% a = arduino('/dev/cu.usbmodem144301','Uno');
 
 
-pause on
+% pause on
 
-[voice, Fs] = audioread('foundLoveVoice.mp3');
+[voice, Fs] = audioread('24K Magic (Official Acapella + Talkbox) Bruno Mars.mp3');
 voice = voice(:,1);
 voiceLen = length(voice);
 dt = 1/Fs;
@@ -28,37 +28,27 @@ gleg = length(guesses);
 glegmax = max(guesses);
 sound(voice, Fs);
 window = timeTotal/gleg;
-for i = 1:gleg
-    if guesses(i) < 150
-        writeDigitalPin(a,'D3',1);
-        pause(0.1);
-        writeDigitalPin(a,'D3',0);
-    elseif guesses(i) < 300 && guesses(i) > 150
-        writeDigitalPin(a,'D5',1);
-        pause(0.1);
-        writeDigitalPin(a,'D5',0);
-    else
-        writeDigitalPin(a,'D6',1);
-        pause(0.1);
-        writeDigitalPin(a,'D6',0);
-    end
+% for i = 1:gleg
+%     if guesses(i) < 150
+%         writeDigitalPin(a,'D3',1);
+%         pause(0.1);
+%         writeDigitalPin(a,'D3',0);
+%     elseif guesses(i) < 300 && guesses(i) > 150
+%         writeDigitalPin(a,'D5',1);
+%         pause(0.1);
+%         writeDigitalPin(a,'D5',0);
+%     else
+%         writeDigitalPin(a,'D6',1);
+%         pause(0.1);
+%         writeDigitalPin(a,'D6',0);
+%     end
+% end
+
+f = zeros(1,450);
+for i=1:450;
+    f(i) = guesses(i);
 end
+f = round(f);
+writematrix(f,'f.txt');
 
-%sound(voice, Fs);
 
-%for i=1:10
-%    writeDigitalPin(a,'D3',0);
-%    writeDigitalPin(a,'D6',1);
-%     pause(0.5); 
-%    writeDigitalPin(a,'D6',0);
-%    writeDigitalPin(a,'D5',1);
-    
-%    pause(0.5);
-    
-%    writeDigitalPin(a,'D5',0);
-%    writeDigitalPin(a,'D3',1);
-    
-%    pause(0.5);
-%end
-
-%clear a
