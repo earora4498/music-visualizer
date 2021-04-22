@@ -53,5 +53,5 @@ end
 
 vals = round(voltages);
 
-writematrix(vals,'bassVoltages.txt');
+writematrix(vals,'bassFrequencies.txt');
 
