@@ -49,6 +49,6 @@ for i=1:450;
     f(i) = guesses(i);
 end
 f = round(f);
-writematrix(f,'f.txt');
+writematrix(f,'melodyFrequencies.txt');
 
 
